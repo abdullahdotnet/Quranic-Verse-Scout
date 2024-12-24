@@ -6,6 +6,7 @@ from model import main, import_ayahs
 from groq import Groq
 from utils import summarize_chunk, combine_summaries, chunk_text, estimate_tokens
 import queue
+import os
 
 # Initialize database connection
 mydb = mysql.connector.connect(
@@ -33,6 +34,9 @@ app = Flask(__name__)
 CORS(app)  # Allow all origins
 import boto3
 
+@app.route("/")
+def home():
+    return "API is running!"
 def translate_to_urdu(text, aws_region="us-east-1"):
     """
     Translates English text into Urdu using the Amazon Translate API.
@@ -166,5 +170,6 @@ def translate_summary():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
     # app.run(debug=True)  # Allow specific origins
-    app.run(host='0.0.0.0', port=5000)
