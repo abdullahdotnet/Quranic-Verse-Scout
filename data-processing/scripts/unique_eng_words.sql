@@ -1,9 +1,0 @@
-INSERT INTO unique_eng_words (word)
-SELECT DISTINCT word
-FROM (
-    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(data, ' ', numbers.n), ' ', -1) AS word
-    FROM
-    (SELECT @row := @row + 1 AS n FROM (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) AS t1, (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) AS t2, (SELECT 0 UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) AS t3, (SELECT @row:=0) AS r) AS numbers
-    JOIN ayah_edition ON CHAR_LENGTH(data) - CHAR_LENGTH(REPLACE(data, ' ', '')) >= numbers.n - 1
-) AS word_list
-WHERE REGEXP_LIKE(word, '^[a-zA-Z]+$');
