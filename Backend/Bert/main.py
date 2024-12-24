@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-import db_credentials as creds
-from model import main, import_ayahs
+from . import db_credentials as creds
+from . model import main, import_ayahs
 from groq import Groq
-from utils import summarize_chunk, combine_summaries, chunk_text, estimate_tokens
+from . utils import summarize_chunk, combine_summaries, chunk_text, estimate_tokens
 import queue
 import os
 
