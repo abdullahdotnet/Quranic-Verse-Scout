@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - QuranScout
+name: Build and deploy Python app to Azure Web App - quranscout
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_94F18EE3C5274752972F394C805B9D16 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D146613F59B24EC7BF5F4BC4F477C505 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FE97BEABE7F54656AE3A9847FE317C31 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F9EFA0F15FBE4E16979D84501ACB7C89 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_88D0F18620F34DD9A805EF755D37113F }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6809FE2D1AB74929AE06A5BFEBC6A068 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'QuranScout'
+          app-name: 'quranscout'
           slot-name: 'Production'
           
